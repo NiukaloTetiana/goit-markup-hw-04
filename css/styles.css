@@ -463,7 +463,8 @@ button {
   text-align: center;
   margin: 0 auto;
   border: 1px solid var(--frame-color);
-  transition: var(--color-transition, --bgr-color-transition, --border-transition, --box-shadow-transition);
+  transition: var(--color-transition, --bgr-color-transition, --border-transition,
+  --box-shadow-transition);
 }
 
 .filter-btn:hover,
@@ -471,7 +472,8 @@ button {
   background-color: var(--accent-color);
   color: var(--primary-theme);
   border: 1px solid transparent;
-  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 
+  0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .filter-list {
@@ -495,12 +497,16 @@ button {
 
 .filter-item:hover,
 .filter-item:focus {
-  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
-    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
-    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
+  0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-.filter-link:hover .overlay-text {
+.filter-link {
+  display: block;
+}
+
+.filter-link:hover .overlay-text,
+.filter-link:focus .overlay-text {
   transform: translateY(0);
 }
 
@@ -519,11 +525,10 @@ button {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 40px 32px;
+
   transform: translateY(100%);
-  transition: transform 250ms ease-in-out;
-  padding-top: 40px;
-  padding-right: 32px;
-  padding-left: 32px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* =============/FILTER============== */
 
@@ -536,7 +541,12 @@ button {
 
 .footer-container {
   display: flex;
+  align-items: baseline;
   margin: 0 auto;
+}
+
+.footer-container-logo {
+margin-right: 120px;
 }
 
 .logo-footer {
@@ -562,7 +572,6 @@ button {
 
   font-size: 16px;
   width: 264px;
-  margin-right: 120px;
 }
 
 .footer-icons-list {
@@ -571,8 +580,12 @@ button {
   text-align: center;
 }
 
-.footer-title {
-  display: inline-block;
+.footer-title-text {
+  color: var(--primary-theme);
+
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   margin-bottom: 16px;
 }
 
@@ -621,6 +634,9 @@ button {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden .modal {
@@ -642,36 +658,39 @@ button {
   border-radius: 4px;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.20), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
 
-  transition: transform 250ms ease-in, opacity 250ms linear;
+  transition: transform 250ms ease-in, opacity 250ms linear, transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop-modal-btn {
- position: absolute;
- top: 24px;
- right: 24px;
-
- display: flex;
- align-items: center;
- justify-content: center;
- width: 24px;
- height:  24px;
- padding: 0;
-
- background-color: var(--frame-color);
- color: var(--navy-titel-color);
- border: 1px solid rgba(0, 0, 0, 0.10);
- border-radius: 50%;
-
-transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), var(--bgr-color-transition, --color-transition);
-}
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  
+  color: var(--navy-titel-color);
+  background-color: var(--frame-color);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 50%;
+  
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), var(--bgr-color-transition, --color-transition);
+  }  
 
 .modal-btn-close {
   fill: currentColor;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop-modal-btn:hover,
 .backdrop-modal-btn:focus {
   color: var(--primary-theme);
   background-color: var(--accent-color);
+
+  border: none;
 }
 /* ==========/MODAL WINDOW=========== */
