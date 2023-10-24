@@ -673,8 +673,7 @@ margin-right: 120px;
   border: 1px solid rgba(0, 0, 0, 0.10);
   border-radius: 50%;
   
-  transition: var(--bgr-color-transition), var(--border-transition);
-   /* transform 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  transition: var(--bgr-color-transition), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
   } 
 
 .backdrop-modal-btn:hover,
